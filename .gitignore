@@ -1,9 +1,7 @@
 */output*/*
 work/
 output/
-test_input_data/
 *.sif
-input.json
 *.json
 cache/
 *.pyc
