@@ -2,7 +2,6 @@
 work/
 output/
 *.sif
-*.json
 cache/
 *.pyc
 __pycache__
