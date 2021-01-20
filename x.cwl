@@ -1,0 +1,1 @@
+argos-cwl/tools/bwa-mem/0.7.12/bwa_mem_with_read_groups.cwl
