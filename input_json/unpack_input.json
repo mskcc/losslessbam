@@ -1,0 +1,9 @@
+{
+  "input_bam":
+    {
+      "class": "File",
+      "path": "../output/foo_tumor.chunk000.rg.merged.bam"
+    },
+  "sample_id": "sample1"
+
+}

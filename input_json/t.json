@@ -1,0 +1,29 @@
+{
+  "sample": {
+    "CN": "MSKCC",
+    "ID": "foo_tumor",
+    "LB": "foo_tumor_1",
+    "PL": "Illumina",
+    "PU": [
+      "foo_tumor_1-foo_tumor",
+      "foo_tumor_2-foo_tumor"
+      ],
+    "RG_ID": [
+      "foo_tumor_1-foo_tumorPE",
+      "foo_tumor_2-foo_tumorPE"],
+    "bam": [],
+    "bwa_output": "foo_tumor.bam",
+    "R1": [
+      {"class": "File",    "path": "/juno/work/ci/argos-test/data/fastq/DU874145-N/DU874145-N_IGO_00000_TEST_L001_R1_001.fastq.gz"},
+      {"class": "File",    "path": "/juno/work/ci/argos-test/data/fastq/DU874145-T/DU874145-T_IGO_00000_TEST_L001_R1_001.fastq.gz"}
+    ],
+    "R2":[
+      {"class": "File",    "path":  "/juno/work/ci/argos-test/data/fastq/DU874145-N/DU874145-N_IGO_00000_TEST_L001_R2_001.fastq.gz"},
+      {"class": "File",    "path": "/juno/work/ci/argos-test/data/fastq/DU874145-T/DU874145-T_IGO_00000_TEST_L001_R2_001.fastq.gz"}
+    ],
+
+  "ref_fasta":{"class": "File",  "path": "/juno/work/ci/resources/genomes/GRCh37/fasta/b37.fasta"},
+
+  "genome": "GRCh37"
+  }
+}
