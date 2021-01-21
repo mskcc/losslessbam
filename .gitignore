@@ -7,5 +7,6 @@ cache/
 __pycache__
 output*
 tools/
+tools*
 original_fastqs/
 tmp/
