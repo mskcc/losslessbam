@@ -88,7 +88,7 @@ steps:
           }"
 
   chunking:
-    run: ../tools/cmo-utils/1.9.15/cmo-split-reads.cwl
+    run: ../argos-cwl/tools/cmo-utils/1.9.15/cmo-split-reads.cwl
     in:
       fastq1:
         source: [get_sample_info/R1]#, consolidate_reads/r1]
@@ -102,7 +102,7 @@ steps:
     scatterMethod: dotproduct
 
   flatten:
-    run: ../tools/flatten-array/1.0.0/flatten-array-fastq.cwl
+    run: ../argos-cwl/tools/flatten-array/1.0.0/flatten-array-fastq.cwl
     in:
       fastq1: chunking/chunks1
       fastq2: chunking/chunks2
@@ -148,7 +148,7 @@ steps:
 
       steps:
         bwa:
-          run: ../tools/bwa-mem/0.7.12/bwa-mem.cwl
+          run: ../argos-cwl/tools/bwa-mem/0.7.12/bwa-mem.cwl
           in:
             reference: ref_fasta
             fastq1: chunkfastq1
@@ -159,7 +159,7 @@ steps:
             genome: genome
           out: [sam]
         sam_to_bam:
-          run: ../tools/samtools.view/1.3.1/samtools.view.cwl
+          run: ../argos-cwl/tools/samtools.view/1.3.1/samtools.view.cwl
           in:
             input: bwa/sam
             isbam:
@@ -168,7 +168,7 @@ steps:
               valueFrom: ${ return true; }
           out: [output_bam]
         add_rg_id:
-          run: ../tools/picard.AddOrReplaceReadGroups/2.9/picard.AddOrReplaceReadGroups.cwl
+          run: ../argos-cwl/tools/picard.AddOrReplaceReadGroups/2.9/picard.AddOrReplaceReadGroups.cwl
           in:
             I: sam_to_bam/output_bam
             O:
@@ -183,7 +183,7 @@ steps:
               default: "coordinate"
           out: [bam, bai]
   merge_bams:
-    run: ../tools/samtools.merge/1.9/samtools.merge.cwl
+    run: ../argos-cwl/tools/samtools.merge/1.9/samtools.merge.cwl
     in:
       input_bams: align/bam
     out:

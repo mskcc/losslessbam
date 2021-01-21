@@ -6,3 +6,4 @@ cache/
 *.pyc
 __pycache__
 output*
+tools*

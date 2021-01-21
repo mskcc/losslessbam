@@ -91,7 +91,7 @@ run_unpack: input_json/unpack_input.json $(OUTPUT_DIR)
 	--copy-outputs \
 	--singularity \
 	--preserve-environment SINGULARITY_CACHEDIR \
-	tools/unpack-bam/0.1.0/unpack-bam.cwl input_json/unpack_input.json
+	argos-cwl/tools/unpack-bam/0.1.0/unpack-bam.cwl input_json/unpack_input.json
 
 run_losslessbam: input_json/losslessBamConver_input.json $(OUTPUT_DIR)
 	module load singularity/3.3.0
