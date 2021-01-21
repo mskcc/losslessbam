@@ -4,21 +4,25 @@ sample:
   LB: foo_tumor_1
   PL: Illumina
   PU:
-  - Normal_1-foo_tumor
-  - Tumor_2-foo_tumor
+  - Normal_PU
+  - Tumor_PU
   RG_ID:
-  - Normal_1-foo_tumorPE
-  - Tumor_2-foo_tumorPE
+  - Normal_RG_ID
+  - Tumor_RG_ID
   bam: []
   bwa_output: foo_tumor.bam
   R1:
+#  - class: File
+#    path: /ifs/archive/GCL/hiseq/FASTQ/PITT_0510_AHJYWYBBXY/Project_11199_B/Sample_SK-MEL-31_IGO_11199_B_1/SK-MEL-31_IGO_11199_B_1_S36_R1_001.fastq.gz
   - class: File
     path: /juno/work/ci/argos-test/data/fastq/DU874145-N/DU874145-N_IGO_00000_TEST_L001_R1_001.fastq.gz
   - class: File
     path: /juno/work/ci/argos-test/data/fastq/DU874145-T/DU874145-T_IGO_00000_TEST_L001_R1_001.fastq.gz
   R2:
+#  - class: File
+#    path: /ifs/archive/GCL/hiseq/FASTQ/PITT_0510_AHJYWYBBXY/Project_11199_B/Sample_SK-MEL-31_IGO_11199_B_1/SK-MEL-31_IGO_11199_B_1_S36_R2_001.fastq.gz
   - class: File
-    path:  /juno/work/ci/argos-test/data/fastq/DU874145-N/DU874145-N_IGO_00000_TEST_L001_R2_001.fastq.gz
+    path: /juno/work/ci/argos-test/data/fastq/DU874145-N/DU874145-N_IGO_00000_TEST_L001_R2_001.fastq.gz
   - class: File
     path: /juno/work/ci/argos-test/data/fastq/DU874145-T/DU874145-T_IGO_00000_TEST_L001_R2_001.fastq.gz
 
