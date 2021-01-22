@@ -10,5 +10,6 @@ tools/
 tools*
 tools
 trash
+temp_dir
 original_fastqs/
 tmp/
