@@ -1,30 +1,26 @@
 sample:
   CN: MSKCC
-  ID: foo_tumor
-  LB: foo_tumor_1
+  ID: N
+  LB: N
   PL: Illumina
   PU:
-  - Normal_PU
-  - Tumor_PU
+  - RG1_PU
+  - RG2_PU
   RG_ID:
-  - Normal_RG_ID
-  - Tumor_RG_ID
+  - RG_1
+  - RG_2
   bam: []
-  bwa_output: foo_tumor.bam
+  bwa_output: N.bam
   R1:
-#  - class: File
-#    path: /ifs/archive/GCL/hiseq/FASTQ/PITT_0510_AHJYWYBBXY/Project_11199_B/Sample_SK-MEL-31_IGO_11199_B_1/SK-MEL-31_IGO_11199_B_1_S36_R1_001.fastq.gz
   - class: File
-    path: /juno/work/ci/argos-test/data/fastq/DU874145-N/DU874145-N_IGO_00000_TEST_L001_R1_001.fastq.gz
+    path: /work/ci/vurals/losslessbam/temp_dir/N_L001_R1.fastq.gz
   - class: File
-    path: /juno/work/ci/argos-test/data/fastq/DU874145-T/DU874145-T_IGO_00000_TEST_L001_R1_001.fastq.gz
+    path: /work/ci/vurals/losslessbam/temp_dir/N_L002_R1.fastq.gz
   R2:
-#  - class: File
-#    path: /ifs/archive/GCL/hiseq/FASTQ/PITT_0510_AHJYWYBBXY/Project_11199_B/Sample_SK-MEL-31_IGO_11199_B_1/SK-MEL-31_IGO_11199_B_1_S36_R2_001.fastq.gz
   - class: File
-    path: /juno/work/ci/argos-test/data/fastq/DU874145-N/DU874145-N_IGO_00000_TEST_L001_R2_001.fastq.gz
+    path: /work/ci/vurals/losslessbam/temp_dir/N_L001_R2.fastq.gz
   - class: File
-    path: /juno/work/ci/argos-test/data/fastq/DU874145-T/DU874145-T_IGO_00000_TEST_L001_R2_001.fastq.gz
+    path: /work/ci/vurals/losslessbam/temp_dir/N_L002_R2.fastq.gz
 
 ref_fasta:
   class: File

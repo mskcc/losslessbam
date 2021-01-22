@@ -9,5 +9,6 @@ output*
 tools/
 tools*
 tools
+trash
 original_fastqs/
 tmp/

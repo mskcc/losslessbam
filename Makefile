@@ -20,16 +20,35 @@ help:
 export SINGULARITY_CACHEDIR:=$(CURDIR)/cache/#/juno/work/ci/pluto-cwl-test/cache
 DOCKER_TAG:=mskcc/unpack_bam:0.1.0
 DOCKER_TAG2:=mskcc/bwa_mem:0.7.12
+DOCKER_TAG3:=mjblow_samtools-1.9:latest
+DOCKER_TAG4:=mskcc_roslin-variant-cmo-utils:1.9.15
+DOCKER_TAG5:=mskcc_roslin-variant-picard:2.9
+DOCKER_TAG6:=mskcc_roslin-variant-samtools:1.3.1
+
 # DOCKER_DEV_TAG:=mskcc/helix_filters_01:dev
 # NOTE: you cannot use a filename with a ':' as a Makefile target
 SINGULARITY_SIF:=mskcc_unpack_bam:0.1.0.sif
 SINGULARITY_SIF2:=mskcc_bwa_mem:0.7.12.sif
+SINGULARITY_SIF3:=mjblow_samtools-1.9:latest.sif
+SINGULARITY_SIF4:=mskcc_roslin-variant-cmo-utils:1.9.15.sif
+SINGULARITY_SIF5:=mskcc_roslin-variant-picard:2.9.sif
+SINGULARITY_SIF6:=mskcc_roslin-variant-samtools:1.3.1.sif
+
+
+
+
+
+
 
 singularity-pull:
 	unset SINGULARITY_CACHEDIR && \
 	module load singularity/3.3.0 && \
 	singularity pull --force --name "$(SINGULARITY_SIF)" docker://$(DOCKER_TAG)
 	singularity pull --force --name "$(SINGULARITY_SIF2)" docker://$(DOCKER_TAG2)
+	singularity pull --force --name "$(SINGULARITY_SIF3)" docker://$(DOCKER_TAG3)
+	singularity pull --force --name "$(SINGULARITY_SIF4)" docker://$(DOCKER_TAG4)
+	singularity pull --force --name "$(SINGULARITY_SIF5)" docker://$(DOCKER_TAG5)
+	singularity pull --force --name "$(SINGULARITY_SIF6)" docker://$(DOCKER_TAG6)
 
 # shell into the Singularity container to check that it looks right
 singularity-shell:
@@ -97,6 +116,11 @@ run_losslessbam: input_json/losslessBamConver_input.json $(OUTPUT_DIR)
 	module load singularity/3.3.0
 	module load cwl/cwltool
 	module load python/3.7.1
+	if [ ! -e $(SINGULARITY_SIF2) ]; then $(MAKE) singularity-pull; fi
+	if [ ! -e $(SINGULARITY_SIF3) ]; then $(MAKE) singularity-pull; fi
+	if [ ! -e $(SINGULARITY_SIF4) ]; then $(MAKE) singularity-pull; fi
+	if [ ! -e $(SINGULARITY_SIF5) ]; then $(MAKE) singularity-pull; fi
+	if [ ! -e $(SINGULARITY_SIF6) ]; then $(MAKE) singularity-pull; fi
 	cwl-runner \
 	--parallel \
 	--leave-tmpdir \
@@ -115,22 +139,23 @@ run_losslessbam: input_json/losslessBamConver_input.json $(OUTPUT_DIR)
 # Run the test suite
 
 
-original_N_R1_fastq:=/juno/work/ci/argos-test/data/fastq/DU874145-N/DU874145-N_IGO_00000_TEST_L001_R1_001.fastq.gz #9.1M
-original_N_R2_fastq:=/juno/work/ci/argos-test/data/fastq/DU874145-N/DU874145-N_IGO_00000_TEST_L001_R2_001.fastq.gz #9.3M
-original_T_R1_fastq:=/juno/work/ci/argos-test/data/fastq/DU874145-T/DU874145-T_IGO_00000_TEST_L001_R1_001.fastq.gz #8.6M
-original_T_R2_fastq:=/juno/work/ci/argos-test/data/fastq/DU874145-T/DU874145-T_IGO_00000_TEST_L001_R2_001.fastq.gz #8.5M
-unpacked_L1_R1_fastq:=output/fastqs/rg1/foo_tumor_L002_R1_001.fastq.gz #8.6M
-unpacked_L1_R2_fastq:=output/fastqs/rg1/foo_tumor_L002_R2_001.fastq.gz #8.5M
-unpacked_L2_R1_fastq:=output/fastqs/rg2/foo_tumor_L001_R1_001.fastq.gz #9.1M
-unpacked_L2_R2_fastq:=output/fastqs/rg2/foo_tumor_L001_R2_001.fastq.gz #9.3M
+original_L1_R1_fastq:=/work/ci/vurals/losslessbam/temp_dir/N_L001_R1.fastq.gz #/juno/work/ci/argos-test/data/fastq/DU874145-N/DU874145-N_IGO_00000_TEST_L001_R1_001.fastq.gz #9.1M
+original_L2_R1_fastq:=/work/ci/vurals/losslessbam/temp_dir/N_L002_R1.fastq.gz #/juno/work/ci/argos-test/data/fastq/DU874145-N/DU874145-N_IGO_00000_TEST_L001_R2_001.fastq.gz #9.3M
+original_L1_R2_fastq:=/work/ci/vurals/losslessbam/temp_dir/N_L001_R2.fastq.gz #/juno/work/ci/argos-test/data/fastq/DU874145-T/DU874145-T_IGO_00000_TEST_L001_R1_001.fastq.gz #8.6M
+original_L2_R2_fastq:=/work/ci/vurals/losslessbam/temp_dir/N_L002_R2.fastq.gz #/juno/work/ci/argos-test/data/fastq/DU874145-T/DU874145-T_IGO_00000_TEST_L001_R2_001.fastq.gz #8.5M
+
+unpacked_L1_R1_fastq:=output/fastqs/rg1/N_L001_R1_001.fastq.gz #8.6M
+unpacked_L1_R2_fastq:=output/fastqs/rg1/N_L001_R2_001.fastq.gz #8.5M
+unpacked_L2_R1_fastq:=output/fastqs/rg2/N_L002_R1_001.fastq.gz #9.1M
+unpacked_L2_R2_fastq:=output/fastqs/rg2/N_L002_R2_001.fastq.gz #9.3M
 
 test:
 	make run_losslessbam
 	make run_unpack
-	diff <(zcat $(original_N_R1_fastq)) <(zcat $(unpacked_L2_R1_fastq)) 1>/dev/null && echo "test passed" || echo "test failed"
-	diff <(zcat $(original_N_R2_fastq)) <(zcat $(unpacked_L2_R2_fastq)) 1>/dev/null && echo "test passed" || echo "test failed"
-	diff <(zcat $(original_T_R1_fastq)) <(zcat $(unpacked_L1_R1_fastq)) 1>/dev/null && echo "test passed" || echo "test failed"
-	diff <(zcat $(original_T_R2_fastq)) <(zcat $(unpacked_L1_R2_fastq)) 1>/dev/null && echo "test passed" || echo "test failed"
+	##diff <(zcat $(original_L1_R1_fastq)) <(zcat $(unpacked_L1_R1_fastq)) 1>/dev/null && echo "test passed" || echo "test failed"; echo $(original_L1_R1_fastq) $(unpacked_L2_R1_fastq)
+	##diff <(zcat $(original_L1_R2_fastq)) <(zcat $(unpacked_L1_R2_fastq)) 1>/dev/null && echo "test passed" || echo "test failed"; echo $(original_L1_R2_fastq) $(unpacked_L2_R2_fastq)
+	##diff <(zcat $(original_L2_R1_fastq)) <(zcat $(unpacked_L2_R1_fastq)) 1>/dev/null && echo "test passed" || echo "test failed"; echo $(original_L2_R1_fastq) $(unpacked_L1_R1_fastq)
+	##diff <(zcat $(original_L2_R2_fastq)) <(zcat $(unpacked_L2_R2_fastq)) 1>/dev/null && echo "test passed" || echo "test failed"; echo $(original_L2_R2_fastq) $(unpacked_L1_R2_fastq)
 
 
 
