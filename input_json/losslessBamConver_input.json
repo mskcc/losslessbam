@@ -1,7 +1,7 @@
 sample:
   CN: MSKCC
-  ID: N
-  LB: N
+  ID: Sample_ID
+  LB: Sample_LB
   PL: Illumina
   PU:
   - RG1_PU
@@ -10,17 +10,17 @@ sample:
   - RG_1
   - RG_2
   bam: []
-  bwa_output: N.bam
+  bwa_output: output.bam
   R1:
   - class: File
-    path: /work/ci/vurals/losslessbam/temp_dir/N_L001_R1.fastq.gz
+    path: /work/ci/vurals/losslessbam/temp_dir/Sample_ID_L001_R1.fastq.gz
   - class: File
-    path: /work/ci/vurals/losslessbam/temp_dir/N_L002_R1.fastq.gz
+    path: /work/ci/vurals/losslessbam/temp_dir/Sample_ID_L002_R1.fastq.gz
   R2:
   - class: File
-    path: /work/ci/vurals/losslessbam/temp_dir/N_L001_R2.fastq.gz
+    path: /work/ci/vurals/losslessbam/temp_dir/Sample_ID_L001_R2.fastq.gz
   - class: File
-    path: /work/ci/vurals/losslessbam/temp_dir/N_L002_R2.fastq.gz
+    path: /work/ci/vurals/losslessbam/temp_dir/Sample_ID_L002_R2.fastq.gz
 
 ref_fasta:
   class: File

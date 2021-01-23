@@ -2,7 +2,7 @@
   "input_bam":
     {
       "class": "File",
-      "path": "../output/N.chunk000.rg.merged.bam"
+      "path": "../output/output.chunk000.rg.merged.bam"
     },
   "sample_id": "sample1"
 
