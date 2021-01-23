@@ -9,10 +9,11 @@ UNAME:=$(shell uname)
 export SINGULARITY_CACHEDIR:=$(CURDIR)/cache/#/juno/work/ci/pluto-cwl-test/cache
 DOCKER_TAG:=mskcc/unpack_bam:0.1.0
 DOCKER_TAG2:=mskcc/bwa_mem:0.7.12
-DOCKER_TAG3:=mjblow_samtools-1.9:latest
-DOCKER_TAG4:=mskcc_roslin-variant-cmo-utils:1.9.15
-DOCKER_TAG5:=mskcc_roslin-variant-picard:2.9
-DOCKER_TAG6:=mskcc_roslin-variant-samtools:1.3.1
+DOCKER_TAG3:=mjblow/samtools-1.9
+DOCKER_TAG4:=mskcc/roslin-variant-cmo-utils:1.9.15
+DOCKER_TAG5:=mskcc/roslin-variant-picard:2.9
+DOCKER_TAG6:=mskcc/roslin-variant-samtools:1.3.1
+
 
 # DOCKER_DEV_TAG:=mskcc/helix_filters_01:dev
 # NOTE: you cannot use a filename with a ':' as a Makefile target
