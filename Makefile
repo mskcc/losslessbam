@@ -67,7 +67,7 @@ run_unpack: input_json/unpack_input.json $(OUTPUT_DIR)
 	--preserve-environment SINGULARITY_CACHEDIR \
 	argos-cwl/tools/unpack-bam/0.1.0/unpack-bam.cwl input_json/unpack_input.json
 
-run_losslessbam: input_json/losslessBamConver_input.json $(OUTPUT_DIR)
+run_losslessbam: input_json/losslessBamConvert_input.json $(OUTPUT_DIR)
 	module load singularity/3.3.0
 	module load cwl/cwltool
 	module load python/3.7.1
@@ -85,7 +85,7 @@ run_losslessbam: input_json/losslessBamConver_input.json $(OUTPUT_DIR)
 	--copy-outputs \
 	--singularity \
 	--preserve-environment SINGULARITY_CACHEDIR \
-	cwl/losslessbam-workflow.cwl input_json/losslessBamConver_input.json
+	cwl/losslessbam-workflow.cwl input_json/losslessBamConvert_input.json
 
 
 original_L1_R1_fastq:=/work/ci/vurals/losslessbam/temp_dir/Sample_ID_L001_R1.fastq.gz
